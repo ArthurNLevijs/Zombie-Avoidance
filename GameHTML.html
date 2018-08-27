@@ -1,17 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
-  <script src="js-template.js"></script>
-  <link rel="stylesheet" type="text/css" href="GAMEJS.css">
+  <title>Zombie Avoidance</title>
+  <link rel="stylesheet" type="text/css" href="GameCss.css">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-
-
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  
+  <div class="game-intro">
+    <img class="game-logo" src="./images/hero.jpg">
+    <br>
+    <button id="start-button">StartGame</button>
+    <p>SURVIVE/avoid</p>
+  </div>
+  
+  <div id="game-board">
+    <canvas id="canvas" height="800" width="1000"></canvas>
+  </div>
+  
+  <script src="GAMEJS.js"></script>
+    <script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 </body>
