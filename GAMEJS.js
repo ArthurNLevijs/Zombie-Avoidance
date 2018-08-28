@@ -16,7 +16,7 @@ this.zombies = []
     this.zombies.forEach((eachZombie)=>{
             if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
             (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
-              alert("game over")
+              prompt('enter you email')
             }
     })
   }
@@ -31,8 +31,12 @@ drawEverything() {
 spawnNewZombies() {
   const theX = 0
   const theY = Math.floor(Math.random()*800)
-  const theWidth = Math.floor(Math.random()*100)
-  const theHeight = Math.floor(Math.random()*100)
+
+  // const theWidth = Math.floor(Math.random()*192)
+  // const theHeight = Math.floor(Math.random()*287)
+  const theWidth = 80
+  const theHeight = 160
+
   this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreen()
 }
@@ -43,8 +47,10 @@ spawnNewZombies() {
 
 class Character{
 constructor() {
-this.x = 200
+this.x = 800
 this.y = 600
+this.newx = 200
+this.newy = 550
 this.width = 50
 this.height = 80
 this.imageSource = "./images/herov2.gif"
@@ -63,18 +69,18 @@ theImage.src = this.imageSource
 
 
 moveUp() {
-  this.y -= 10
+  this.y -= 20
 }
 
 moveDown() {
-  this.y += 10
+  this.y += 20
 }
 
 moveRight() {
-  this.x += 10
+  this.x += 20
 }
 moveLeft() {
-  this.x -= 10
+  this.x -= 20
 }
 
 // checkMove(futureX, futureY) {
@@ -103,18 +109,26 @@ class Zombie{
     this.y = theY
     this.width = theWidth
     this.height = theHeight
+    this.imageSource = "./images/image.png";
   }
 
   draw() {
-    ctx.fillRect(this.x, this.y, this.width, this.height)
+    // ctx.fillRect(this.x, this.y, this.width, this.height)
+    var theImage = new Image();
+    theImage.src = this.imageSource;
+
+    ctx.drawImage(theImage, this.x, this.y, this.width, this.height)
+
   }
 
   runAccrossTheScreen(){
     setInterval(() => {
       this.x +=10
-    },50)
+    },40)
   }
+
 }
+
 
 var ctx = document.getElementById("canvas").getContext("2d")
 
