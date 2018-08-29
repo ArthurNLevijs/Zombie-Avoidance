@@ -16,7 +16,7 @@ this.zombies = []
     this.zombies.forEach((eachZombie)=>{
             if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
             (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
-              prompt('enter you email')
+              console.log('col det')
             }
     })
   }
@@ -28,9 +28,9 @@ drawEverything() {
   })
 }
 
-spawnNewZombies() {
-  const theX = 0
-  const theY = Math.floor(Math.random()*800)
+spawnNewZombiesLeft() {
+  const theX = 0;
+  const theY = 50+Math.floor(Math.random()*800)
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
@@ -38,7 +38,21 @@ spawnNewZombies() {
   const theHeight = 160
 
   this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
-  this.zombies[0].runAccrossTheScreen()
+  this.zombies[0].runAccrossTheScreenLeft()
+}
+
+
+spawnNewZombiesRight() {
+  const theX = 900;
+  const theY = 50+Math.floor(Math.random()*800)
+
+  // const theWidth = Math.floor(Math.random()*192)
+  // const theHeight = Math.floor(Math.random()*287)
+  const theWidth = 80
+  const theHeight = 160
+
+  this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
+  this.zombies[0].runAccrossTheScreenRight()
 }
 
 }
@@ -121,9 +135,17 @@ class Zombie{
 
   }
 
-  runAccrossTheScreen(){
+  runAccrossTheScreenLeft(){
     setInterval(() => {
-      this.x +=10
+      this.x +=10;
+      // this.y +=10;
+    },40)
+  }
+
+  runAccrossTheScreenRight(){
+    setInterval(() => {
+      this.x -=10;
+      // this.y +=10;
     },40)
   }
 
@@ -153,7 +175,8 @@ function animate() {
   // setInterval(() => {
     ctx.clearRect(0,0,1000,800)
     theGame.drawEverything()
-    if(frames % 100 === 0)theGame.spawnNewZombies()
+    if(frames % 100 === 0)theGame.spawnNewZombiesLeft();
+    if(frames % 100 === 1)theGame.spawnNewZombiesRight()
     theGame.collisionCheck()
     frames++
   // },50)
