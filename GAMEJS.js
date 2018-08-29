@@ -10,18 +10,20 @@ this.zombies = []
 // this.zombies.forEach((zomb)=>zomb.draw())
 
 
-  }
 
+  }
   collisionCheck(){
     this.zombies.forEach((eachZombie)=>{
-            if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
-            (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
-              console.log('col det')
-            }
+      if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
+      (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
+        // alert('col det')
+        startGame()
+      }
     })
   }
 
-drawEverything() {
+
+  drawEverything() {
   this.character.draw()
   this.zombies.forEach((oneZomb)=>{
     oneZomb.draw()
@@ -48,12 +50,13 @@ spawnNewZombiesRight() {
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
-  const theWidth = 80
-  const theHeight = 160
+  const theWidth = 70
+  const theHeight = 140
 
   this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreenRight()
 }
+
 
 }
 
@@ -61,10 +64,8 @@ spawnNewZombiesRight() {
 
 class Character{
 constructor() {
-this.x = 800
-this.y = 600
-this.newx = 200
-this.newy = 550
+this.x = 500
+this.y = 400
 this.width = 50
 this.height = 80
 this.imageSource = "./images/herov2.gif"
@@ -83,18 +84,52 @@ theImage.src = this.imageSource
 
 
 moveUp() {
-  this.y -= 20
+  if (this.y === 0) {
+  } else {
+  this.y -= 25
+  }
 }
 
 moveDown() {
-  this.y += 20
+  if (this.y === 720) {
+  } else {
+  this.y += 25
+  }
 }
 
 moveRight() {
-  this.x += 20
+  if(this.x === 940) {
+  } else {
+    this.x += 25
+  }
 }
+
 moveLeft() {
-  this.x -= 20
+  if (this.x === 0) {
+  } else {
+    this.x -= 25
+    
+  }
+}
+
+moveUpRight() {
+  this.x += 25
+  this.y -= 25
+}
+
+moveUpLeft() {
+  this.x -= 25
+  this.y -= 25
+}
+
+moveDownRight() {
+  this.x += 25
+  this.y += 25
+}
+
+moveDownLeft() {
+  this.x -= 25
+  this.y += 25
 }
 
 // checkMove(futureX, futureY) {
@@ -139,14 +174,14 @@ class Zombie{
     setInterval(() => {
       this.x +=10;
       // this.y +=10;
-    },40)
+    },50)
   }
 
   runAccrossTheScreenRight(){
     setInterval(() => {
       this.x -=10;
       // this.y +=10;
-    },40)
+    },50)
   }
 
 }
@@ -176,7 +211,7 @@ function animate() {
     ctx.clearRect(0,0,1000,800)
     theGame.drawEverything()
     if(frames % 100 === 0)theGame.spawnNewZombiesLeft();
-    if(frames % 100 === 1)theGame.spawnNewZombiesRight()
+    if(frames % 100 === 1)theGame.spawnNewZombiesRight();
     theGame.collisionCheck()
     frames++
   // },50)
@@ -187,27 +222,86 @@ function animate() {
 
 
 document.onkeydown = (e) => {
+// var map = {37: false, 38: false, 39: false, 40: false}
+// if(e.keyCode in map) {
+//   map[e.keyCode] = true;
+//   if(map[38] && map[39]) {
+//     theGame.character.moveUpRight()
+//   }
+// }
+//   console.log(e.key);
+//   console.log(map);
 
 switch(e.key) {
+  case 'w':
+  // case 'ArrowUp':
+  e.preventDefault()
+  theGame.character.moveUp()
+  break;
+  
+  case 's':
+  // case 'ArrowDown':
+  e.preventDefault()
+  theGame.character.moveDown()
+  break;
+
+  case 'a':
+  // case 'ArrowLeft':
+  e.preventDefault()
+  theGame.character.moveLeft()
+  break;
+
+  case 'd':
+  // case 'ArrowRight':
+  e.preventDefault()
+  theGame.character.moveRight()
+  break;
+
+  case 'e':
+  e.preventDefault()
+  theGame.character.moveUpRight()
+  break;
+
+  case 'q':
+  e.preventDefault()
+  theGame.character.moveUpLeft()
+  break;
+
+  case 'z':
+  e.preventDefault()
+  theGame.character.moveDownLeft()
+  break;
+
+  case 'c':
+  e.preventDefault()
+  theGame.character.moveDownRight()
+  break;
+
+  // case 'w':
   case 'ArrowUp':
   e.preventDefault()
   theGame.character.moveUp()
   break;
   
+  // case 's':
   case 'ArrowDown':
   e.preventDefault()
   theGame.character.moveDown()
   break;
 
+  // case 'a':
   case 'ArrowLeft':
   e.preventDefault()
   theGame.character.moveLeft()
   break;
 
+  // case 'd':
   case 'ArrowRight':
   e.preventDefault()
   theGame.character.moveRight()
   break;
+
 }
 }
 }
+
