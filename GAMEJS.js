@@ -1,5 +1,9 @@
 let theGame;
-
+// timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+// timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
 window.onload = function() {
 
 class Game {
@@ -12,13 +16,9 @@ this.zombies2 = []
 // this.zombies.forEach((zomb)=>zomb.draw())
 
 // timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 0;
 setInterval(setTime, 1000);
-
 function setTime() {
-  ++totalSeconds;
+  totalSeconds+=1;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
   minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
 }
@@ -31,15 +31,24 @@ function pad(val) {
     return valString;
   }
 }
-// timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
+
 
 
   }
+  pad(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+      return "0" + valString;
+    } else {
+      return valString;
+    }
+  }
+// timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
   collisionCheck(){
     this.zombies.forEach((eachZombie)=>{
       if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
       (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
-        alert('col det')
+        alert(`You have been eatin' by zombies! You laster ${this.pad(parseInt(totalSeconds / 60))} mins ${this.pad(totalSeconds % 60)} secs!`)
         location.reload()
         // startGame()
       }
@@ -116,14 +125,14 @@ moveUp() {
 }
 
 moveDown() {
-  if (this.y === 720) {
+  if (this.y === 725) {
   } else {
   this.y += 25
   }
 }
 
 moveRight() {
-  if(this.x === 940) {
+  if(this.x === 950) {
   } else {
     this.x += 25
   }
