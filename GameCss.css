@@ -2,7 +2,11 @@ canvas {
   float: right;
   margin-top: -300px;
   margin-right: 150px;
-  background-image: url("./images/grass.jpg");
+  background-image: url("./images/fieldOfZombies.jpg");
   width: 1200px;
   height: 900px;
+}
+label {
+  color: red;
+  font-size: 4em;
 }

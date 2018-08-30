@@ -1,4 +1,5 @@
 let theGame;
+
 window.onload = function() {
 
 class Game {
@@ -6,9 +7,31 @@ class Game {
 
 this.character = new Character()
 this.zombies = []
+this.zombies2 = []
 // this.character.draw()
 // this.zombies.forEach((zomb)=>zomb.draw())
 
+// timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+// timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
 
 
   }
@@ -16,8 +39,9 @@ this.zombies = []
     this.zombies.forEach((eachZombie)=>{
       if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
       (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
-        // alert('col det')
-        startGame()
+        alert('col det')
+        location.reload()
+        // startGame()
       }
     })
   }
@@ -32,15 +56,16 @@ this.zombies = []
 
 spawnNewZombiesLeft() {
   const theX = 0;
-  const theY = 50+Math.floor(Math.random()*800)
+  const theY = 50 + Math.floor(Math.random()*800)
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
-  const theWidth = 80
-  const theHeight = 160
+  const theWidth = 60
+  const theHeight = 120
 
   this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreenLeft()
+  
 }
 
 
@@ -50,10 +75,10 @@ spawnNewZombiesRight() {
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
-  const theWidth = 70
-  const theHeight = 140
+  const theWidth = 60
+  const theHeight = 120
 
-  this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
+  this.zombies.unshift( new Zombie2(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreenRight()
 }
 
@@ -68,7 +93,7 @@ this.x = 500
 this.y = 400
 this.width = 50
 this.height = 80
-this.imageSource = "./images/herov2.gif"
+this.imageSource = "./images/mainCharacter.gif"
 
 }
 
@@ -158,7 +183,7 @@ class Zombie{
     this.y = theY
     this.width = theWidth
     this.height = theHeight
-    this.imageSource = "./images/image.png";
+    this.imageSource = "./images/soldierZombie.png";
   }
 
   draw() {
@@ -176,6 +201,40 @@ class Zombie{
       // this.y +=10;
     },50)
   }
+
+  // runAccrossTheScreenRight(){
+  //   setInterval(() => {
+  //     this.x -=10;
+  //     // this.y +=10;
+  //   },50)
+  // }
+
+}
+
+class Zombie2{
+  constructor(theX, theY, theWidth, theHeight) {
+    this.x = theX
+    this.y = theY
+    this.width = theWidth
+    this.height = theHeight
+    this.imageSource = "./images/captainZombie.png";
+  }
+
+  draw() {
+    // ctx.fillRect(this.x, this.y, this.width, this.height)
+    var theImage = new Image();
+    theImage.src = this.imageSource;
+
+    ctx.drawImage(theImage, this.x, this.y, this.width, this.height)
+
+  }
+
+  // runAccrossTheScreenLeft(){
+  //   setInterval(() => {
+  //     this.x +=10;
+  //     // this.y +=10;
+  //   },50)
+  // }
 
   runAccrossTheScreenRight(){
     setInterval(() => {
@@ -304,4 +363,3 @@ switch(e.key) {
 }
 }
 }
-
