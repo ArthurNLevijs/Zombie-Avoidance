@@ -1,12 +1,29 @@
 canvas {
   float: right;
-  margin-top: -300px;
-  margin-right: 150px;
+  margin-top: -700px;
+  margin-right: 7px;
   background-image: url("./images/fieldOfZombies.jpg");
   width: 1200px;
   height: 900px;
 }
 label {
-  color: red;
+  color: darkred;
   font-size: 4em;
+}
+.game-logo {
+  width: 300px;
+  margin-left: 75px;
+}
+.body {
+  background-color: rgb(149, 168, 154);
+}
+#start-button {
+  margin-left: 75px;
+}
+p {
+  margin-left: 75px;
+}
+.fff {
+  margin-left: 75px;
+  margin-top: 100px;
 }
