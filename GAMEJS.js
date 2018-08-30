@@ -12,6 +12,7 @@ class Game {
 this.character = new Character()
 this.zombies = []
 this.zombies2 = []
+this.zombies3 = []
 // this.character.draw()
 // this.zombies.forEach((zomb)=>zomb.draw())
 
@@ -91,8 +92,22 @@ spawnNewZombiesRight() {
   this.zombies[0].runAccrossTheScreenRight()
 }
 
+spawnNewZombiesFast() {
+  const theX = 900;
+  const theY = 50+Math.floor(Math.random()*800)
+
+  // const theWidth = Math.floor(Math.random()*192)
+  // const theHeight = Math.floor(Math.random()*287)
+  const theWidth = 60
+  const theHeight = 120
+
+  this.zombies.unshift( new Zombie3(theX, theY, theWidth, theHeight))
+  this.zombies[0].runAccrossTheScreenRight()
+}
 
 }
+
+
 
 
 
@@ -254,6 +269,39 @@ class Zombie2{
 
 }
 
+class Zombie3{
+  constructor(theX, theY, theWidth, theHeight) {
+    this.x = theX
+    this.y = theY
+    this.width = theWidth
+    this.height = theHeight
+    this.imageSource = "./images/rangerZombie.png";
+  }
+
+  draw() {
+    // ctx.fillRect(this.x, this.y, this.width, this.height)
+    var theImage = new Image();
+    theImage.src = this.imageSource;
+
+    ctx.drawImage(theImage, this.x, this.y, this.width, this.height)
+
+  }
+
+  // runAccrossTheScreenLeft(){
+  //   setInterval(() => {
+  //     this.x +=10;
+  //     // this.y +=10;
+  //   },50)
+  // }
+
+  runAccrossTheScreenRight(){
+    setInterval(() => {
+      this.x -=10;
+      // this.y +=10;
+    },25)
+  }
+
+}
 
 var ctx = document.getElementById("canvas").getContext("2d")
 
@@ -280,6 +328,7 @@ function animate() {
     theGame.drawEverything()
     if(frames % 100 === 0)theGame.spawnNewZombiesLeft();
     if(frames % 100 === 1)theGame.spawnNewZombiesRight();
+    if(frames % 100 === 1)theGame.spawnNewZombiesFast();
     theGame.collisionCheck()
     frames++
   // },50)
