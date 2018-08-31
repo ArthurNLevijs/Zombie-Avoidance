@@ -5,7 +5,7 @@ var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
 // timertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimertimer
 window.onload = function() {
-
+    $("#myModal").modal("show");
 class Game {
   constructor() {
 

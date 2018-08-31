@@ -6,7 +6,7 @@ canvas {
   width: 1200px;
   height: 900px;
 }
-label {
+.label {
   color: darkred;
   font-size: 4em;
 }

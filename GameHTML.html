@@ -23,13 +23,10 @@
     <canvas id="canvas" height="800" width="1000"></canvas>
   </div>
   <div class="fff">
-  <label id="minutes">00</label><label>:</label><label id="seconds">00</label>
+  <label class="label" id="minutes">00</label><label class="label">:</label><label class="label" id="seconds">00</label>
 </div>
-  <script src="GAMEJS.js"></script>
-    <script
-src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+
+
 
   <div class="footer-copyright text-center py-3">
     <span class="blinking upgrade-to-pro"><b>PRE-ORDER NOW &nbsp;</b></span>
@@ -41,5 +38,99 @@ src="https://code.jquery.com/jquery-3.3.1.min.js"
       <img src="./images/steam.png" height="42" width="42">
       <span><b>&nbsp; &nbsp;<strike>79$</strike>&nbsp; 59$</b></span>
   </div>
+
+
+
+
+
+
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">PRE-ORDER NOW</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body form-horizontal">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="container">
+                <div class="row">
+                  <div class="panel panel-default credit-card-box">
+                    <div class="panel-heading display-table">
+                      <div class="row display-tr">
+                        <h3 class="panel-title display-td">Payment Details</h3>
+                        <div class="display-td">
+                          <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <form role="form" id="payment-form">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              <label for="cardNumber">CARD NUMBER</label>
+                              <div class="input-group">
+                                <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required
+                                  autofocus />
+                                <span class="input-group-addon">
+                                  <i class="fa fa-credit-card"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-7 col-md-7">
+                            <div class="form-group">
+                              <label for="cardExpiry">
+                                <span class="hidden-xs">EXPIRATION</span>
+                                <span class="visible-xs-inline">EXP</span> DATE</label>
+                              <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required />
+                            </div>
+                          </div>
+                          <div class="col-xs-5 col-md-5 pull-right">
+                            <div class="form-group">
+                              <label for="cardCVC">CV CODE</label>
+                              <input type="tel" class="form-control" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              <label for="">AMOUNT</label>
+                              <input type="text" class="form-control" name="donationAmount" placeholder="$" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Submit</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="row" style="display:none;">
+                          <div class="col-xs-12">
+                            <p class="payment-errors"></p>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="GAMEJS.js"></script>
+
+
 </body>
 </html>
