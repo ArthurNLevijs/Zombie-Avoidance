@@ -49,7 +49,7 @@ function pad(val) {
     this.zombies.forEach((eachZombie)=>{
       if((this.character.x + this.character.width >= eachZombie.x && this.character.x <= eachZombie.x+eachZombie.width) &&
       (this.character.y + this.character.height >= eachZombie.y && this.character.y <= eachZombie.y+eachZombie.height)   ){
-        alert(`You have been eatin' by zombies! You laster ${this.pad(parseInt(totalSeconds / 60))} mins ${this.pad(totalSeconds % 60)} secs!`)
+        alert(`You have been eaten' by zombies! You lasted ${this.pad(parseInt(totalSeconds / 60))} mins ${this.pad(totalSeconds % 60)} secs!`)
         location.reload()
         // startGame()
         
