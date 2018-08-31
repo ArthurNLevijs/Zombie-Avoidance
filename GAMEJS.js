@@ -52,6 +52,7 @@ function pad(val) {
         alert(`You have been eatin' by zombies! You laster ${this.pad(parseInt(totalSeconds / 60))} mins ${this.pad(totalSeconds % 60)} secs!`)
         location.reload()
         // startGame()
+        
       }
     })
   }
@@ -70,8 +71,8 @@ spawnNewZombiesLeft() {
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
-  const theWidth = 60
-  const theHeight = 120
+  const theWidth = 50
+  const theHeight = 100
 
   this.zombies.unshift( new Zombie(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreenLeft()
@@ -85,8 +86,8 @@ spawnNewZombiesRight() {
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
-  const theWidth = 60
-  const theHeight = 120
+  const theWidth = 50
+  const theHeight = 100
 
   this.zombies.unshift( new Zombie2(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreenRight()
@@ -98,8 +99,8 @@ spawnNewZombiesFast() {
 
   // const theWidth = Math.floor(Math.random()*192)
   // const theHeight = Math.floor(Math.random()*287)
-  const theWidth = 60
-  const theHeight = 120
+  const theWidth = 50
+  const theHeight = 100
 
   this.zombies.unshift( new Zombie3(theX, theY, theWidth, theHeight))
   this.zombies[0].runAccrossTheScreenRight()

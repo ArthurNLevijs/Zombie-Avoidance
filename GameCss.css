@@ -27,3 +27,16 @@ p {
   margin-left: 75px;
   margin-top: 100px;
 }
+.blinking{
+  animation:blinkingText 1s infinite;
+}
+@keyframes blinkingText{
+  0%{     color: #000;    }
+  49%{    color: transparent; }
+  50%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #000;    }
+}
+.upgrade-to-pro {
+  font-size: 1.1em;
+}
